@@ -1,0 +1,64 @@
+﻿
+esxcli network vswitch standard uplink add --uplink-name vmnic7 --vswitch-name vSwitch0
+esxcli network vswitch standard policy security set --allow-promiscuous=false --allow-mac-change=false --allow-forged-transmits=false -v vSwitch0
+esxcli network vswitch standard policy failover set --active-uplinks=vmnic2,vmnic7 -v vSwitch0
+
+esxcli network vswitch standard add --ports 256 --vswitch-name vSwitch1
+esxcli network vswitch standard set -m 1500 -v vSwitch1
+esxcli network vswitch standard policy security set --allow-promiscuous=false --allow-mac-change=false --allow-forged-transmits=false -v vSwitch1
+esxcli network vswitch standard uplink add --uplink-name vmnic4 --vswitch-name vSwitch1
+esxcli network vswitch standard uplink add --uplink-name vmnic8 --vswitch-name vSwitch1
+esxcli network vswitch standard uplink add --uplink-name vmnic12 --vswitch-name vSwitch1
+esxcli network vswitch standard uplink add --uplink-name vmnic16 --vswitch-name vSwitch1
+esxcli network vswitch standard policy failover set --active-uplinks=vmnic4,vmnic8,vmnic12,vmnic16 -v vSwitch1
+
+esxcli network vswitch standard add --ports 256 --vswitch-name vSwitch2
+esxcli network vswitch standard set -m 1500 -v vSwitch2
+esxcli network vswitch standard uplink add --uplink-name vmnic5 --vswitch-name vSwitch2
+esxcli network vswitch standard uplink add --uplink-name vmnic9 --vswitch-name vSwitch2
+esxcli network vswitch standard uplink add --uplink-name vmnic13 --vswitch-name vSwitch2
+esxcli network vswitch standard uplink add --uplink-name vmnic17 --vswitch-name vSwitch2
+esxcli network vswitch standard policy failover set --active-uplinks=vmnic5,vmnic9,vmnic13,vmnic17 -v vSwitch2
+
+esxcli network vswitch standard add --ports 256 --vswitch-name vSwitch3
+esxcli network vswitch standard set -m 1500 -v vSwitch3
+
+esxcli network vswitch standard add --ports 256 --vswitch-name vSwitch4
+esxcli network vswitch standard set -m 1500 -v vSwitch4
+esxcli network vswitch standard uplink add --uplink-name vmnic3 --vswitch-name vSwitch4
+esxcli network vswitch standard policy failover set --active-uplinks=vmnic3 -v vSwitch4
+
+esxcli network vswitch standard add --ports 256 --vswitch-name vSwitch5
+esxcli network vswitch standard set -m 1500 -v vSwitch5
+esxcli network vswitch standard uplink add --uplink-name vmnic0 --vswitch-name vSwitch5
+esxcli network vswitch standard uplink add --uplink-name vmnic10 --vswitch-name vSwitch5
+esxcli network vswitch standard policy failover set --active-uplinks=vmnic0,vmnic10 -v vSwitch5
+
+esxcli network vswitch standard add --ports 256 --vswitch-name vSwitch6
+esxcli network vswitch standard set -m 1500 -v vSwitch6
+esxcli network vswitch standard uplink add --uplink-name vmnic6 --vswitch-name vSwitch6
+esxcli network vswitch standard uplink add --uplink-name vmnic11 --vswitch-name vSwitch6
+esxcli network vswitch standard uplink add --uplink-name vmnic15 --vswitch-name vSwitch6
+esxcli network vswitch standard uplink add --uplink-name vmnic19 --vswitch-name vSwitch6
+esxcli network vswitch standard policy failover set --active-uplinks=vmnic6,vmnic11,vmnic15,vmnic19 -v vSwitch6
+
+esxcli network vswitch standard add --ports 256 --vswitch-name vSwitch7
+esxcli network vswitch standard set -m 1500 -v vSwitch8
+esxcli network vswitch standard uplink add --uplink-name vmnic18 --vswitch-name vSwitch7
+esxcli network vswitch standard policy failover set --active-uplinks=vmnic18 -v vSwitch7
+
+esxcli network vswitch standard add --ports 256 --vswitch-name vSwitch8
+esxcli network vswitch standard set -m 1500 -v vSwitch8
+esxcli network vswitch standard uplink add --uplink-name vmnic1 --vswitch-name vSwitch8
+esxcli network vswitch standard uplink add --uplink-name vmnic14 --vswitch-name vSwitch8
+esxcli network vswitch standard policy failover set --active-uplinks=vmnic1,vmnic14 -v vSwitch8
+
+esxcli network vswitch standard portgroup add --portgroup-name LAN --vswitch-name vSwitch1
+esxcli network vswitch standard portgroup add --portgroup-name "LAN - Kemp Only" --vswitch-name vSwitch1
+esxcli network vswitch standard portgroup add --portgroup-name DMZ --vswitch-name vSwitch2
+esxcli network vswitch standard portgroup add --portgroup-name VIA --vswitch-name vSwitch4
+esxcli network vswitch standard portgroup add --portgroup-name ExchRep --vswitch-name vSwitch5
+esxcli network vswitch standard portgroup add --portgroup-name VOIP --vswitch-name vSwitch6
+esxcli network vswitch standard portgroup add --portgroup-name Doors/CCTV --vswitch-name vSwitch7
+esxcli network vswitch standard portgroup add --portgroup-name SOC --vswitch-name vSwitch8
+
